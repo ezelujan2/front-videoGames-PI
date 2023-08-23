@@ -2,7 +2,7 @@ import { GET_CARDS, GET_BY_NAME, GET_DETAILS, SORT_GAMES, GET_GENRES, FILTER_BY_
 import axios from 'axios'
 
 export const post_game = (data) => {
-    const endpoint = 'http://localhost:3001/videogames'
+    const endpoint = 'https://back-videogames-pi-production.up.railway.app/videogames'
     return async (dispatch) => {
         try {
             await axios.post(endpoint,data)
@@ -17,7 +17,7 @@ export const post_game = (data) => {
 }
 
 export const get_cards = () => {
-    const endpoint = 'http://localhost:3001/videogames'
+    const endpoint = 'https://back-videogames-pi-production.up.railway.app/videogames'
     return async (dispatch) => {
         try {
             const {data} = await axios(endpoint)
@@ -32,7 +32,7 @@ export const get_cards = () => {
 }
 
 export const get_by_name = (name) => {
-    const endpoint = 'http://localhost:3001/videogames?name='
+    const endpoint = 'https://back-videogames-pi-production.up.railway.app/videogames?name='
     return async (dispatch) => {
         try {
             const {data} = await axios(endpoint + name)
@@ -47,7 +47,7 @@ export const get_by_name = (name) => {
 }
 
 export const get_details = (id) => {
-    const endpoint = 'http://localhost:3001/videogames/'
+    const endpoint = 'https://back-videogames-pi-production.up.railway.app/videogames/'
     return async (dispatch) => {
         try {
             const {data} = await axios(endpoint + id)
@@ -61,7 +61,7 @@ export const get_details = (id) => {
     }
 } 
 export const get_genres = () => {
-    const endpoint = 'http://localhost:3001/genres'
+    const endpoint = 'https://back-videogames-pi-production.up.railway.app/genres'
     return async (dispatch)=> {
         try {
             const {data} = await axios(endpoint)
