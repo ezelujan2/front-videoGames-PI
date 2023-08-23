@@ -2,9 +2,9 @@ import estilos from './Form.module.css'
 import { useState } from 'react'
 import validate from './validation'
 import { useNavigate } from 'react-router-dom'
-import { get_cards, get_genres, post_game } from '../../redux/actions/actions'
+import {  get_genres, post_game } from '../../redux/actions/actions'
 import { useDispatch } from 'react-redux'
-import { UseSelector, useSelector } from 'react-redux/es/hooks/useSelector'
+import {  useSelector } from 'react-redux/es/hooks/useSelector'
 
 
 export default function Form(){
