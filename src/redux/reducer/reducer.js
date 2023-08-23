@@ -59,10 +59,16 @@ const reducer = (state=initialState, {type,payload}) => {
                     if(juego.hasOwnProperty('updatedAt')) db.push(juego)
                     else api.push(juego)
                 })
-                if(payload === 'DB') return {...state, juegos: db, filteredByByOrigin: {filtered:true, by: 'db'}}
-                if(payload === 'API') return {...state, juegos: api, filteredByOrigin: {filtered:true, by: 'api'}}
-                if(payload === 'todos') return {...state, juegos: state.aux, orderByOrigin: {filtered:false, by: ''}}
-        
+                case FILTER_BY_ORIGIN:
+                if(payload === 'DB') {
+                    return {...state, juegos: db, filteredByByOrigin: {filtered:true, by: 'db'}}
+                }
+                if(payload === 'API') {
+                    return {...state, juegos: api, filteredByOrigin: {filtered:true, by: 'api'}}
+                }
+                if(payload === 'todos') {
+                    return {...state, juegos: state.aux, orderByOrigin: {filtered:false, by: ''}}
+                }
         case POST_GAME:
                 return {...state, orderByOrigin: false}
 
