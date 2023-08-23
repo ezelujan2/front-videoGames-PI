@@ -23,7 +23,7 @@ export default function Form(){
 
     const todook = () => {
         // Son obligatorios el nombre, fecha, description y plataforma.
-        if(game.name != '' && game.description != "" && game.platform.length !== 0 && game.released != "" && !genero && !platform && error.rating == '' && error.released == '' ) return false;
+        if(game.name !== '' && game.description !== "" && game.platform.length !== 0 && game.released !== "" && !genero && !platform && error.rating === '' && error.released === '' ) return false;
         else return true
     }
 
@@ -55,9 +55,11 @@ export default function Form(){
         let exist = null
         genres.map((gen)=> {
             if(gen.name.toLowerCase().includes(genero.toLowerCase())){
-                exist = gen.name
+                exist = gen.name;
             }
+            return null;
         })
+        
         if(exist){
             if(game.genres.includes(exist)) {
                 setError({...error, genre: `"${genero}" already added`})
@@ -79,7 +81,9 @@ export default function Form(){
     const addPlatform = () => {
         let exist = null;
         game.platform.map(plat => {
-            if(plat.name.toLowerCase().includes(platform.toLowerCase())) exist = plat
+            if(plat.name.toLowerCase().includes(platform.toLowerCase())) {
+                exist = plat }
+                return null
         })
         if(exist){
             setError({...error, platform: `"${exist.name}" already added`})
@@ -102,7 +106,7 @@ export default function Form(){
 
     const handleDelete = (event) => {
         // event.preventDefault();
-        const deletedGenre = game.genres.filter(gen => gen != event.target.id)
+        const deletedGenre = game.genres.filter(gen => gen !== event.target.id)
         setGame({...game, genres: deletedGenre})
     }
 
