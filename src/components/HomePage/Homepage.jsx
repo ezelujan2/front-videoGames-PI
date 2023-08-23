@@ -37,7 +37,7 @@ export default function Homepage() {
                     setIsLoading(false);
                 }, 3000);
             });
-    }, []);
+    }, [dispatch]);
 
     const[name,setName] = useState({
         game  : '',
@@ -54,7 +54,7 @@ export default function Homepage() {
         if (name.game !== '') {
           dispatch(get_by_name(name.game));
         }
-      }, [name.game]);
+      }, [dispatch,name.game]);
 
     const [selected, setSelected] = useState(null)
     
