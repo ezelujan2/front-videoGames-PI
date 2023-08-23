@@ -34,9 +34,9 @@ const reducer = (state=initialState, {type,payload}) => {
 
             else if(payload === 'RD')
                 return {...state, juegos: orderedlist.sort((a,b) => a.rating - b.rating)}
-
+            break;
         case GET_GENRES:
-            return{...state,genres:payload}
+            return {...state,genres:payload} 
         case FILTER_BY_GENRE:
                 if(payload === 'todos'){
                     return{...state, juegos:state.aux}
@@ -52,16 +52,21 @@ const reducer = (state=initialState, {type,payload}) => {
                     });
                     return{...state, juegos:filtered}
                 }
-        case FILTER_BY_ORIGIN:
+                case FILTER_BY_ORIGIN:
                 let db = []
                 let api = []
                 state.juegos.map(juego => {
-                    if(juego.hasOwnProperty('updatedAt')) db.push(juego)
-                    else api.push(juego)
-                })
-                case FILTER_BY_ORIGIN:
+                    if (juego.hasOwnProperty('updatedAt')) {
+                        db.push(juego);
+                        return null; // Devuelve un valor nulo para cumplir con el requisito de la función map
+                    } else {
+                        api.push(juego);
+                        return null; // Devuelve un valor nulo para cumplir con el requisito de la función map
+                    }
+                });
+                
                 if(payload === 'DB') {
-                    return {...state, juegos: db, filteredByByOrigin: {filtered:true, by: 'db'}}
+                    return {...state, juegos: db, filteredByOrigin: {filtered:true, by: 'db'}}
                 }
                 if(payload === 'API') {
                     return {...state, juegos: api, filteredByOrigin: {filtered:true, by: 'api'}}
@@ -69,6 +74,7 @@ const reducer = (state=initialState, {type,payload}) => {
                 if(payload === 'todos') {
                     return {...state, juegos: state.aux, orderByOrigin: {filtered:false, by: ''}}
                 }
+                break
         case POST_GAME:
                 return {...state, orderByOrigin: false}
 
